@@ -184,14 +184,16 @@ int factorial(){
     scanf("%d", &num);
 
     if (num<0){
-
+        
         printf("\nPlease enter a number equal to or greater than 0.\n");
         return 1;
     }
 
-    for(i=1;i<=num;i++)
-    fact = fact*i;
-    printf("Factorial of %d is: %d\n", num, fact);
-
+    for(i=1;i<=num;i++){
+        
+        fact = fact*i;
+        printf("Factorial of %d is: %d\n", num, fact);
+    }
+    
     return 0;
 }
