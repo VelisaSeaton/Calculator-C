@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define KEY "Enter the calculator operation you want to use"
+#define KEY "Enter the calculator operation you want to use: "
 
 void addition();
 void subtraction();
@@ -12,7 +12,7 @@ void multiplication();
 void division();
 void modulus();
 void power();
-int factorial();
+unsigned long long factoring();
 void calculator_operations();
 
 int main(void){
@@ -20,22 +20,21 @@ int main(void){
     printf("Hi! What is your name?\n");
     char str[50];
     gets(str);
-    printf("Nice to meet you %s! ", str);
-    printf("Have fun calculating!\n\n");
+    printf("\nNice to meet you %s! ", str);
+    printf("Have fun calculating!");
 
     int X=1;
-    char Calc_oprn;
+    char calc_op;
 
     calculator_operations();
 
     while(X){
 
-        printf("\n");
-        printf("%s : ", KEY);
+        printf("\n%s", KEY);
 
-        Calc_oprn=getche();
+        calc_op = getche();
 
-        switch(Calc_oprn){
+        switch(calc_op){
 
             case '+': addition();
                       break;
@@ -55,7 +54,7 @@ int main(void){
             case '^': power();
                       break;
 
-            case '!': factorial();
+            case '!': factoring();
                       break;
 
             case 'H':
@@ -73,8 +72,8 @@ int main(void){
 
             default : system("cls");
 
-    printf("You have entered an unavailable operation.\n");
-    printf("Please enter one of the available operations below.\n\n");
+    printf("Oops! %s, you have entered an unavailable operation.\n", str);
+    printf("Please enter one of the available operations below.");
                       calculator_operations();
         }
     }
@@ -82,7 +81,7 @@ int main(void){
 
 void calculator_operations(){
 
-    printf("Press 'Q' or 'q' to quit the program\n");
+    printf("\n\nPress 'Q' or 'q' to quit the program\n");
     printf("Press 'H' or 'h' to display available options\n");
     printf("Press 'C' or 'c' to clear the screen and display available options\n\n");
 
@@ -92,7 +91,7 @@ void calculator_operations(){
     printf("Enter / for Division\n");
     printf("Enter ? for Modulus\n");
     printf("Enter ^ for Power\n");
-    printf("Enter ! for Factorial\n");
+    printf("Enter ! for Factoring\n");
 }
 
 void addition(){
@@ -112,88 +111,82 @@ void addition(){
 
 void subtraction(){
 
-    int a, b, c = 0;
+    int a, b, diff = 0;
     printf("\n\nEnter first number: ");
     scanf("%d", &a);
     printf("Enter second number: ");
     scanf("%d", &b);
 
-    c = a - b;
+    diff = a - b;
 
-    printf("\n%d - %d = %d\n", a, b, c);
+    printf("\n%d - %d = %d\n", a, b, diff);
 }
 
 void multiplication(){
 
-    int a, b, mul=0;
+    int c, d, prod=0;
     printf("\n\nEnter first number: ");
-    scanf("%d", &a);
+    scanf("%d", &c);
     printf("Enter second number: ");
-    scanf("%d", &b);
+    scanf("%d", &d);
 
-    mul = a*b;
+    prod = c*d;
 
-    printf("\nProduct = %d\n", mul);
+    printf("\nProduct = %d\n", prod);
 }
 
 void division(){
 
-    int a, b, d = 0;
+    int e, f, quotient = 0;
     printf("\n\nEnter dividend: ");
-    scanf("%d", &a);
+    scanf("%d", &e);
     printf("Enter divisor: ");
-    scanf("%d", &b);
+    scanf("%d", &f);
 
-    d = a/b;
+    quotient = e/f;
 
-    printf("\nQuotient = %d\n", d);
+    printf("\nQuotient = %d\n", quotient);
 }
 
 void modulus(){
 
-   int a, b, d = 0;
+   int g, h, remaining = 0;
    printf("\n\nEnter first number: ");
-   scanf("%d", &a);
+   scanf("%d", &g);
    printf("Enter second number: ");
-   scanf("%d", &b);
+   scanf("%d", &h);
 
-   d = a%b;
+   remaining = g%h;
 
-   printf("\nRemainder = %d\n", d);
+   printf("\nRemainder = %d\n", remaining);
 }
 
 void power(){
 
-    double a,num, p;
+    double o, num, p;
     printf("\n\nEnter the base number: ");
-    scanf("%lf", &a);
+    scanf("%lf", &o);
 
     printf("Enter the exponent: ");
     scanf("%lf", &num);
 
-    p = pow(a,num);
+    p = pow(o,num);
 
-    printf("\n%lf to the power %lf = %lf \n", a, num, p);
+    printf("\n%lf to the power %lf = %lf \n", o, num, p);
 }
 
-int factorial(){
+unsigned long long factoring(){
 
-    int i, fact=1, num;
+    unsigned long long i, num = 0;
 
-    printf("\n\nEnter a number to find factorial: ");
+    printf("\n\nEnter a number to find its factors: ");
     scanf("%d", &num);
 
-    if (num<0){
-        
-        printf("\nPlease enter a number equal to or greater than 0.\n");
-        return 1;
+    printf("Factors of %d:\n", num);
+    for(i = 1; i <= num; i++){
+        if(num % i == 0){
+            printf("%d\n", i);
+        }
     }
-
-    for(i=1;i<=num;i++){
-        
-        fact = fact*i;
-        printf("Factorial of %d is: %d\n", num, fact);
-    }
-    
     return 0;
 }
