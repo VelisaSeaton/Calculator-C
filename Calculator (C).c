@@ -96,17 +96,17 @@ void calculator_operations(){
 
 void addition(){
 
-   int n, total=0, k=0, num;
+   int n, sum = 0, k = 0, num;
    printf("\n\nEnter the number of elements you want to add: ");
    scanf("%d", &n);
    printf("Enter %d numbers one by one:\n", n);
    while(k<n){
 
        scanf("%d", &num);
-       total = total + num;
+       sum = sum + num;
        k = k + 1;
    }
-   printf("\nSum of %d numbers = %d\n", n, total);
+   printf("\nSum of %d numbers = %d\n", n, sum);
 }
 
 void subtraction(){
